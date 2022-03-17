@@ -1,18 +1,22 @@
-from pickletools import uint1
 import connector
 import sftp
 import sys
-
+from connector import SavePictureToDisc as sp
+from sftp import SftpConnect as sf
 
 uInput = sys.stdin.readline()
 uInput = uInput.strip()
 
 if __name__ == '__main__':
+   
     if uInput == "altanen":
-      sp = connector.SavePictureToDisc()
-      sp.save_picture(uInput)
+      sp.save_picture()
+      sf.sftp_put()
 
-      pp = sftp.SftpConnect()
-      pp.sftp_put(uInput)
+    elif (uInput == "pergolan"): 
+
+      sp.save_picture()
+      sf.sftp_put()
+      
     else: 
-        print("cake!")
+      print("Something went wrong!")
