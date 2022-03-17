@@ -1,22 +1,27 @@
-import connector
-import sftp
 import sys
+from credentials import Credentials as cr
 from connector import SavePictureToDisc as sp
 from sftp import SftpConnect as sf
+import fb
 
-uInput = sys.stdin.readline()
-uInput = uInput.strip()
+#uInput = sys.stdin.readline()
+#uInput = uInput.strip()
+
+uInput = "altanen"
 
 if __name__ == '__main__':
-   
+
     if uInput == "altanen":
-      sp.save_picture()
-      sf.sftp_put()
+        cr.Urls(uInput)
+        sp.save_picture()
+        sf.sftp_put()
+        fb.callSendAPI()
 
-    elif (uInput == "pergolan"): 
+    elif (uInput == "pergolan"):
+        cr.Urls(uInput)
+        sp.save_picture()
+        sf.sftp_put()
+        fb.callSendAPI()
 
-      sp.save_picture()
-      sf.sftp_put()
-      
-    else: 
-      print("Something went wrong!")
+    else:
+        print("Shit happened!")
